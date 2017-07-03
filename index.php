@@ -1,120 +1,239 @@
 <?php
+include_once(getcwd() . '/general.php');
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Port tester</title>
+    <style type="text/css">
+        /* Style the tab */
+        div.tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+        
+        /* Style the buttons inside the tab */
+        div.tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        
+        /* Change background color of buttons on hover */
+        div.tab button:hover {
+            background-color: #ddd;
+        }
+        
+        /* Create an active/current tablink class */
+        div.tab button.active {
+            background-color: #ccc;
+        }
+        
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        } 
+        
+        #ProbarServicioWeb {
+            display: block;
+        }
+    </style>
+</head>
+<body>
 
-date_default_timezone_set('America/Guatemala');
-$basepath = dirname(__FILE__);
-
-ini_set("log_errors", 1);
-ini_set("error_log", $basepath . "/log/port-ws-error.log");
-
-require_once($basepath . '/PortSoapClass.php');
-
-const ENDPOINT = 'http://10.75.1.37:8083/';
-
-function testTestResponseMethod()
-{
-    $params = array(
-        'endpoint' => ENDPOINT,
-        'method' => 'test'
-        );
+    <div class="tab">
+      <button class="tablinks active" data-tab="ProbarServicioWeb">ProbarServicioWeb</button>
+      <button class="tablinks" data-tab="ConsultaInformacion">ConsultaInformacion</button>
+      <button class="tablinks" data-tab="ProcesaInformacion">ProcesaInformacion</button>
+      <button class="tablinks" data-tab="CambioUbicacion">CambioUbicacion</button>
+    </div>
     
-    $response = PortSoap::getResponse($params);
-    var_dump(date('Y-m-d H:i:s'), $params, $response);
+    <div id="ProbarServicioWeb" class="tabcontent">
+      <h3>ProbarServicioWeb - PruebaSistema</h3>
+      <form method="POST" action="/wsresponse.php?q=test">
+          <dl>
+              <dt>Probar servicio web</dt>
+          </dl>
+          <input type="submit" value="Submit"/>
+      </form>
+    </div>
     
-}
-
-function testGetResponseMethod()
-{
-    $xmlData = array(
-        'numero_mic' => 335,
-        'numero_contenedor' => 7896,
-        'tipo_transaccion' => 1,
-        'empresa_transmite' => 'copa',
-        'login_usuario' => 'johndoe',
-        'clave_usuario' => 'ds7KJdd6',
-        'nombre_usuario' => 'John Doe'
-        );
+    <div id="ConsultaInformacion" class="tabcontent">
+      <h3>ConsultaInformacion - GetContieneEnPredio</h3>
+      <form method="POST" action="/wsresponse.php?q=get">
+          <dl>
+              <dt><label for="numero_mic">Número MIC</label></dt>
+              <dd><input type="text" name="numero_mic"></dd>
+              
+              <dt><label for="numero_contenedor">Número contenedor</label></dt>
+              <dd><input type="text" name="numero_contenedor"></dd>
+              
+              <dt><label for="tipo_transaccion">Tipo transacción</label></dt>
+              <dd>
+                  <select name="tipo_transaccion">
+                      <option value="01">01 - Consulta</option>
+                      <option value="02">02 - Recepción</option>
+                      <option value="03">03 - Despacho</option>
+                  </select>
+              </dd>
+              
+              <dt><label for="empresa_transmite">Empresa transmite</label></dt>
+              <dd><input type="text" name="empresa_transmite"></dd>
+              
+              <dt><label for="login_usuario">Login usuario</label></dt>
+              <dd><input type="text" name="login_usuario"></dd>
+              
+              <dt><label for="clave_usuario">Clave usuario</label></dt>
+              <dd><input type="password" name="clave_usuario"></dd>
+              
+              <dt><label for="nombre_usuario">Nombre usuario</label></dt>
+              <dd><input type="text" name="nombre_usuario"></dd>
+          </dl>
+          <input type="submit" value="Submit"/>
+      </form>
+    </div>
     
-    $params = array(
-        'endpoint' => ENDPOINT,
-        'login' => 'johndoe',
-        'password' => 'ds7KJdd6',
-        'company' => 'PUERTO QUETZAL',
-        'xml' => PortSoap::getXml('get', $xmlData),
-        'method' => 'get'
-        );
-    
-    $response = PortSoap::getResponse($params);
-    var_dump(date('Y-m-d H:i:s'), $params, $response);
-}
+    <div id="ProcesaInformacion" class="tabcontent">
+      <h3>ProcesaInformacion - Verifica_Datos</h3>
+      <form method="POST" action="/wsresponse.php?q=check">
+          <dl>
+              <dt><label for="numero_mic">Número MIC</label></dt>
+              <dd><input type="text" name="numero_mic"></dd>
+              
+              <dt><label for="numero_contenedor">Número contenedor</label></dt>
+              <dd><input type="text" name="numero_contenedor"></dd>
+              
+              <dt><label for="tipo_transaccion">Tipo transacción</label></dt>
+              <dd>
+                  <select name="tipo_transaccion">
+                      <option value="01">01 - Consulta</option>
+                      <option value="02">02 - Recepción</option>
+                      <option value="03">03 - Despacho</option>
+                  </select>
+              </dd>
 
-function testCheckResponseMethod()
-{
-    $xmlData = array(
-        'numero_mic' => 335,
-        'numero_contenedor' => 7896,
-        'tipo_transaccion' => 1,
-        'ubicacion_predio' => '42-65-3',
-        'marchamo_aduana' => 7745,
-        'marchamo_1' => 2346,
-        'marchamo_2' => null,
-        'marchamo_3' => null,
-        'fecha_ciclo' => '05/04/2017 12:15:00',
-        'num_ciclo' => 678,
-        'vacio_lleno' => 4,
-        'obse_activ2' => null,
-        'peso_bruto_bascula' => 540,
-        'danos' => 'rspado',
-        'empresa_transmite' => 'copa',
-        'login_usuario' => 'johndoe',
-        'clave_usuario' => 'ds7KJdd6',
-        'nombre_usuario' => 'John Doe'
-        );
-    
-    $params = array(
-        'endpoint' => ENDPOINT,
-        'login' => 'johndoe',
-        'password' => 'ds7KJdd6',
-        'company' => 'PUERTO QUETZAL',
-        'xml' => PortSoap::getXml('check', $xmlData),
-        'method' => 'check'
-        );
-    
-    $response = PortSoap::getResponse($params);
-    var_dump(date('Y-m-d H:i:s'), $params, $response);
-}
+              <dt><label for="marchamo_aduana">Marchamo aduana</label></dt>
+              <dd><input type="text" name="marchamo_aduana"></dd>
+              
+              <dt><label for="marchamo_1">Marchamo 1</label></dt>
+              <dd><input type="text" name="marchamo_1"></dd>
+              
+              <dt><label for="marchamo_2">Marchamo 2</label></dt>
+              <dd><input type="text" name="marchamo_2"></dd>
+              
+              <dt><label for="marchamo_3">Marchamo 3</label></dt>
+              <dd><input type="text" name="marchamo_3"></dd>
+              
+              <dt><label for="fecha_ciclo">Fecha ciclo</label></dt>
+              <dd><input type="text" name="fecha_ciclo" placeholder="dd/mm/aaaa hh:mm:ss"></dd>
+              
+              <dt><label for="num_ciclo">Número ciclo</label></dt>
+              <dd><input type="text" name="num_ciclo"></dd>
+              
+              <dt><label for="vacio_lleno">Vacío/Lleno</label></dt>
+              <dd>
+                  <select name="vacio_lleno">
+                      <option value="4">4 - Vacío</option>
+                      <option value="5">5 - Lleno</option>
+                  </select>
+              </dd>
+              
+              <dt><label for="obse_activ2">Observaciones</label></dt>
+              <dd><textarea name="obse_activ2"></textarea></dd>
+              
+              <dt><label for="peso_bruto_bascula">Peso en Kg.</label></dt>
+              <dd><input type="number" name="peso_bruto_bascula"></dd>
+              
+              <dt><label for="danos">Daños</label></dt>
+              <dd><textarea name="danos"></textarea></dd>
+              
+              <dt><label for="empresa_transmite">Empresa transmite</label></dt>
+              <dd><input type="text" name="empresa_transmite"></dd>
+              
+              <dt><label for="login_usuario">Login usuario</label></dt>
+              <dd><input type="text" name="login_usuario"></dd>
+              
+              <dt><label for="clave_usuario">Clave usuario</label></dt>
+              <dd><input type="password" name="clave_usuario"></dd>
+              
+              <dt><label for="nombre_usuario">Nombre usuario</label></dt>
+              <dd><input type="text" name="nombre_usuario"></dd>
+          </dl>
+          <input type="submit" value="Submit"/>
+      </form>
+    </div> 
+        
+    <div id="CambioUbicacion" class="tabcontent">
+      <h3>CambioUbicacion - CambioUbicacion</h3>
+      <form method="POST" action="/wsresponse.php?q=change">
+          <dl>
+              <dt><label for="numero_contenedor">Número contenedor</label></dt>
+              <dd><input type="text" name="numero_contenedor"></dd>
+              
+              <dt><label for="ubicacion_predio">Ubicación predio</label></dt>
+              <dd><input type="text" name="ubicacion_predio"></dd>
+              
+              <dt><label for="empresa_transmite">Empresa transmite</label></dt>
+              <dd><input type="text" name="empresa_transmite"></dd>
+              
+              <dt><label for="login_usuario">Login usuario</label></dt>
+              <dd><input type="text" name="login_usuario"></dd>
+              
+              <dt><label for="clave_usuario">Clave usuario</label></dt>
+              <dd><input type="password" name="clave_usuario"></dd>
+              
+              <dt><label for="nombre_usuario">Nombre usuario</label></dt>
+              <dd><input type="text" name="nombre_usuario"></dd>
+          </dl>
+          <input type="submit" value="Submit"/>
+      </form>
+    </div> 
 
-function testChangeResponseMethod()
-{
-    $xmlData = array(
-        'numero_contenedor' => 7896,
-        'ubicacion_predio' => '42-65-3',
-        'empresa_transmite' => 'copa',
-        'login_usuario' => 'johndoe',
-        'clave_usuario' => 'ds7KJdd6',
-        'nombre_usuario' => 'John Doe'
-        );
-    
-    $params = array(
-        'endpoint' => ENDPOINT,
-        'login' => 'johndoe',
-        'password' => 'ds7KJdd6',
-        'company' => 'PUERTO QUETZAL',
-        'xml' => PortSoap::getXml('change', $xmlData),
-        'method' => 'change'
-        );
-    
-    $response = PortSoap::getResponse($params);
-    var_dump(date('Y-m-d H:i:s'), $params, $response);
-}
+    <script type="text/javascript">
+        var port = {
+            
+            tablinks: document.getElementsByClassName("tablinks"),
+            tabcontent: document.getElementsByClassName("tabcontent"),
+            
+            changeTab() {
+                var activeTab = this.getAttribute('data-tab');
+                console.log(activeTab)
+                for (i = 0; i < port.tabcontent.length; i++) {
+                    port.tabcontent[i].style.display = "none";
+                }
+                for (i = 0; i < port.tablinks.length; i++) {
+                    port.tablinks[i].className = port.tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(activeTab).style.display = "block";
+                this.className += ' ' + " active";
 
-// ProbarServicioWeb - PruebaSistema
-// testTestResponseMethod();
-
-// ConsultaInformacion - GetContieneEnPredio
-// testGetResponseMethod();
-
-// ProcesaInformacion - Verifica_Datos
-// testCheckResponseMethod();
-
-// CambioUbicacion - CambioUbicacion
-// testChangeResponseMethod();
+            },
+            
+            atachEvents() {
+                for (var i = 0; i < port.tablinks.length; i++) {
+                    port.tablinks[i].addEventListener('click', port.changeTab, false);
+                }
+            },
+            
+            start() {
+                if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+                    this.atachEvents();
+                } else {
+                    document.addEventListener('DOMContentLoaded', this.atachEvents);
+                }
+            }
+        };
+        
+        port.start();
+    </script>
+</body>
+</html>

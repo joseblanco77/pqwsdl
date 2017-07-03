@@ -25,7 +25,7 @@ class PortSoap
 
     private function __construct($params)
     {
-        $this->portWsEndpoint = trim($params['endpoint'], '/') . '/';
+        $this->portWsEndpoint = trim(ENDPOINT, '/') . '/';
         $this->portWsLogin    = $params['login'];
         $this->portWsPassword = $params['password'];
         $this->portWsCompany  = $params['company'];
