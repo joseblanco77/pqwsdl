@@ -4,6 +4,6 @@ CREATE TABLE IF NOT EXISTS `pqwsdl` (
   `response` text NOT NULL default '',
   `status` varchar(5) NOT NULL default '',
   `params` text NOT NULL default '',
-  ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id_wsdl`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
