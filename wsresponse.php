@@ -6,8 +6,7 @@ $action = isset($_GET['q']) ? $_GET['q'] : false;
 if(!$action || !in_array($action,array('test','get','check','change'))) {
     header('Location: /');
 }
-
-$portManager = PortManager::getInstance($action, $_POST);
+$portManager = PortManager::getInstance($action, $_POST, 7896 , $db);
 ?>
 <!DOCTYPE html>
 <html>

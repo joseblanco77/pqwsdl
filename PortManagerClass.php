@@ -8,25 +8,33 @@ class Portmanager {
     
     private $post;
     
-    private function __construct($type, $post) 
+    private $db;
+
+    private $idStock;
+    
+    private function __construct($type, $post, $idStock, $db) 
     {
         $this->type = ucfirst(strtolower($type));
         $this->post = $post;
         $this->method = 'get' . $this->type . 'Params';
+        $this->db = $db;
+        $this->idStock = $idStock;
         $this->params = $this->{$this->method}();
     }
     
-    public function getInstance($type, $post = array())
+    public function getInstance($type, $post = array(), $idStock, $db)
     {
         if($inst === null) {
-            $inst = new Portmanager($type,$post);
+            $inst = new Portmanager($type,$post,$idStock,$db);
         }
         return $inst;
     }
     
     public function getResponse()
     {
-        return PortSoap::getResponse($this->params);
+        $response = PortSoap::getResponse($this->params);
+        $this->saveResponse($response);
+        return $response;
     }
     
     public function getParams()
@@ -84,6 +92,14 @@ class Portmanager {
             );
         
         return $params;
+    }
+    
+    private function saveResponse($response)
+    {
+        $jsonResponse = json_encode($response);
+        $jsonParams = json_encode($this->params);
+        $query = "INSERT INTO `pqwsdl` (`id_stock`,`response`,`status`,`params`) VALUES ({$this->idStock}, '{$jsonResponse}', '{$response['status']}', '{$jsonParams}');";
+        $this->db->query($query);
     }
 
 }

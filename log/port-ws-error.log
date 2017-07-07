@@ -67,3 +67,113 @@
 [03-Jul-2017 15:29:42 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/wsresponse.php:0
 [03-Jul-2017 15:29:42 America/Guatemala] PHP   2. Portmanager::getInstance() /home/ubuntu/workspace/wsresponse.php:10
 [03-Jul-2017 15:29:42 America/Guatemala] PHP   3. Portmanager->__construct() /home/ubuntu/workspace/PortManagerClass.php:22
+[07-Jul-2017 16:10:24 America/Guatemala] PHP Fatal error:  Call to undefined function get_env() in /home/ubuntu/workspace/general.php on line 9
+[07-Jul-2017 16:10:24 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:10:24 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:10:24 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:17:34 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 16
+[07-Jul-2017 16:17:34 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:17:34 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:17:34 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:18:06 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 16
+[07-Jul-2017 16:18:06 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:18:06 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:18:06 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:18:12 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 16
+[07-Jul-2017 16:18:12 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:18:12 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:18:12 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:19:49 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 17
+[07-Jul-2017 16:19:49 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:19:49 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:19:49 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:20:24 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 17
+[07-Jul-2017 16:20:24 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:20:24 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:20:24 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:20:38 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 17
+[07-Jul-2017 16:20:38 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:20:38 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:20:38 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:22:05 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 17
+[07-Jul-2017 16:22:05 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:22:05 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:22:05 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:23:32 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 17
+[07-Jul-2017 16:23:32 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:23:32 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:23:32 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:23:51 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 17
+[07-Jul-2017 16:23:51 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:23:51 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:23:51 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:26:11 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 17
+[07-Jul-2017 16:26:11 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:26:11 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:26:11 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:27:35 America/Guatemala] PHP Fatal error:  Class 'DB' not found in /home/ubuntu/workspace/general.php on line 17
+[07-Jul-2017 16:27:35 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:27:35 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:27:35 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:28:56 America/Guatemala] PHP Fatal error:  Non-static method DB::DB() cannot be called statically in /home/ubuntu/workspace/general.php on line 17
+[07-Jul-2017 16:28:56 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:28:56 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:28:56 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:29:01 America/Guatemala] PHP Fatal error:  Non-static method DB::DB() cannot be called statically in /home/ubuntu/workspace/general.php on line 17
+[07-Jul-2017 16:29:01 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:29:01 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:29:01 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:29:47 America/Guatemala] PHP Fatal error:  Constructor DB::DB() cannot be static in /home/ubuntu/workspace/db.class.php on line 291
+[07-Jul-2017 16:29:47 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:29:47 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/index.php:0
+[07-Jul-2017 16:29:47 America/Guatemala] PHP   2. include_once() /home/ubuntu/workspace/index.php:2
+[07-Jul-2017 16:43:30 America/Guatemala] PHP Warning:  Missing argument 3 for Portmanager::getInstance(), called in /home/ubuntu/workspace/wsresponse.php on line 10 and defined in /home/ubuntu/workspace/PortManagerClass.php on line 20
+[07-Jul-2017 16:43:30 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:43:30 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/wsresponse.php:0
+[07-Jul-2017 16:43:30 America/Guatemala] PHP   2. Portmanager::getInstance() /home/ubuntu/workspace/wsresponse.php:10
+[07-Jul-2017 16:59:46 America/Guatemala] PHP Warning:  Missing argument 3 for Portmanager::getInstance(), called in /home/ubuntu/workspace/wsresponse.php on line 9 and defined in /home/ubuntu/workspace/PortManagerClass.php on line 19
+[07-Jul-2017 16:59:46 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 16:59:46 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/wsresponse.php:0
+[07-Jul-2017 16:59:46 America/Guatemala] PHP   2. Portmanager::getInstance() /home/ubuntu/workspace/wsresponse.php:9
+[07-Jul-2017 17:01:14 America/Guatemala] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://10.75.1.37:8083/ProbarServicioWeb.asmx?WSDL' : failed to load external entity "http://10.75.1.37:8083/ProbarServicioWeb.asmx?WSDL"
+ in /home/ubuntu/workspace/PortSoapClass.php on line 125
+[07-Jul-2017 17:01:14 America/Guatemala] #0 /home/ubuntu/workspace/PortSoapClass.php(125): SoapClient->SoapClient('http://10.75.1....')
+#1 /home/ubuntu/workspace/PortSoapClass.php(74): PortSoap->testPortWs()
+#2 /home/ubuntu/workspace/PortSoapClass.php(56): PortSoap->proccessRequest()
+#3 /home/ubuntu/workspace/PortManagerClass.php(30): PortSoap::getResponse(Array)
+#4 /home/ubuntu/workspace/wsresponse.php(49): Portmanager->getResponse()
+#5 {main}
+[07-Jul-2017 17:20:29 America/Guatemala] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://10.75.1.37:8083/ProbarServicioWeb.asmx?WSDL' : failed to load external entity "http://10.75.1.37:8083/ProbarServicioWeb.asmx?WSDL"
+ in /home/ubuntu/workspace/PortSoapClass.php on line 124
+[07-Jul-2017 17:20:29 America/Guatemala] #0 /home/ubuntu/workspace/PortSoapClass.php(124): SoapClient->SoapClient('http://10.75.1....')
+#1 /home/ubuntu/workspace/PortSoapClass.php(73): PortSoap->testPortWs()
+#2 /home/ubuntu/workspace/PortSoapClass.php(56): PortSoap->proccessRequest()
+#3 /home/ubuntu/workspace/PortManagerClass.php(32): PortSoap::getResponse(Array)
+#4 /home/ubuntu/workspace/wsresponse.php(49): Portmanager->getResponse()
+#5 {main}
+[07-Jul-2017 17:28:25 America/Guatemala] PHP Warning:  Missing argument 4 for Portmanager::__construct(), called in /home/ubuntu/workspace/PortManagerClass.php on line 27 and defined in /home/ubuntu/workspace/PortManagerClass.php on line 15
+[07-Jul-2017 17:28:25 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 17:28:25 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/wsresponse.php:0
+[07-Jul-2017 17:28:25 America/Guatemala] PHP   2. Portmanager::getInstance() /home/ubuntu/workspace/wsresponse.php:9
+[07-Jul-2017 17:28:25 America/Guatemala] PHP   3. Portmanager->__construct() /home/ubuntu/workspace/PortManagerClass.php:27
+[07-Jul-2017 17:29:25 America/Guatemala] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://10.75.1.37:8083/ProcesaInformacion.asmx?WSDL' : failed to load external entity "http://10.75.1.37:8083/ProcesaInformacion.asmx?WSDL"
+ in /home/ubuntu/workspace/PortSoapClass.php on line 150
+[07-Jul-2017 17:29:25 America/Guatemala] #0 /home/ubuntu/workspace/PortSoapClass.php(150): SoapClient->SoapClient('http://10.75.1....', Array)
+#1 /home/ubuntu/workspace/PortSoapClass.php(73): PortSoap->checkData()
+#2 /home/ubuntu/workspace/PortSoapClass.php(56): PortSoap->proccessRequest()
+#3 /home/ubuntu/workspace/PortManagerClass.php(34): PortSoap::getResponse(Array)
+#4 /home/ubuntu/workspace/wsresponse.php(49): Portmanager->getResponse()
+#5 {main}
+[07-Jul-2017 17:29:25 America/Guatemala] PHP Fatal error:  Call to a member function query() on a non-object in /home/ubuntu/workspace/PortManagerClass.php on line 101
+[07-Jul-2017 17:29:25 America/Guatemala] PHP Stack trace:
+[07-Jul-2017 17:29:25 America/Guatemala] PHP   1. {main}() /home/ubuntu/workspace/wsresponse.php:0
+[07-Jul-2017 17:29:25 America/Guatemala] PHP   2. Portmanager->getResponse() /home/ubuntu/workspace/wsresponse.php:49
+[07-Jul-2017 17:29:25 America/Guatemala] PHP   3. Portmanager->saveResponse() /home/ubuntu/workspace/PortManagerClass.php:35
+[07-Jul-2017 17:32:57 America/Guatemala] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://10.75.1.37:8083/ProcesaInformacion.asmx?WSDL' : failed to load external entity "http://10.75.1.37:8083/ProcesaInformacion.asmx?WSDL"
+ in /home/ubuntu/workspace/PortSoapClass.php on line 150
+[07-Jul-2017 17:32:57 America/Guatemala] #0 /home/ubuntu/workspace/PortSoapClass.php(150): SoapClient->SoapClient('http://10.75.1....', Array)
+#1 /home/ubuntu/workspace/PortSoapClass.php(73): PortSoap->checkData()
+#2 /home/ubuntu/workspace/PortSoapClass.php(56): PortSoap->proccessRequest()
+#3 /home/ubuntu/workspace/PortManagerClass.php(35): PortSoap::getResponse(Array)
+#4 /home/ubuntu/workspace/wsresponse.php(49): Portmanager->getResponse()
+#5 {main}

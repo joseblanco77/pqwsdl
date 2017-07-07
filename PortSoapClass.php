@@ -70,7 +70,6 @@ class PortSoap
                 'message' => $errorMessage
                 );
         }
-        
         $portWsResponse = $this->{$method}();
         $response = $this->proccessResponse($portWsResponse);
         

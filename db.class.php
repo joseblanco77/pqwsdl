@@ -1,4 +1,4 @@
-<?
+<?php
   /** A PHP class to access MySQL database with convenient methods
     * in an object oriented way, and with a powerful debug system.\n
     * Licence:  LGPL \n
@@ -10,27 +10,43 @@
   {
     /** Put this variable to true if you want ALL queries to be debugged by default:
       */
-    var $defaultDebug = false;
+    private $defaultDebug = false;
 
     /** INTERNAL: The start time, in miliseconds.
       */
-    var $mtStart;
+    private $mtStart;
     /** INTERNAL: The number of executed queries.
       */
-    var $nbQueries;
+    private $nbQueries;
     /** INTERNAL: The last result ressource of a query().
       */
-    var $lastResult;
-
-    /** Connect to a MySQL database to be able to use the methods below.
-      */
-    function DB($base, $server, $user, $pass)
+    private $lastResult;
+    
+    public static $inst = null;
+    
+    public $connect_error = true;
+    
+    public $host_info;
+    
+    private function __construct($base, $server, $user, $pass) 
     {
       $this->mtStart    = $this->getMicroTime();
       $this->nbQueries  = 0;
       $this->lastResult = NULL;
       mysql_connect($server, $user, $pass) or die('Server connexion not possible.');
       mysql_select_db($base)               or die('Database connexion not possible.');
+      $this->connect_error = false;
+      $this->host_info = $server;
+    }
+
+    /** Connect to a MySQL database to be able to use the methods below.
+      */
+    public static function DB($base, $server, $user, $pass)
+    {
+        if($inst===null) {
+            $inst = new DB($base, $server, $user, $pass);
+        }
+        return $inst;
     }
 
     /** Query the database.
@@ -38,7 +54,7 @@
       * @param $debug If true, it output the query and the resulting table.
       * @return The result of the query, to use with fetchNextObject().
       */
-    function query($query, $debug = -1)
+    public function query($query, $debug = -1)
     {
       $this->nbQueries++;
       $this->lastResult = mysql_query($query) or $this->debugAndDie($query);
@@ -52,7 +68,7 @@
       * @param $query The query.
       * @param $debug If true, it output the query and the resulting table.
       */
-    function execute($query, $debug = -1)
+    public function execute($query, $debug = -1)
     {
       $this->nbQueries++;
       mysql_query($query) or $this->debugAndDie($query);
@@ -63,7 +79,7 @@
       * @param $result The ressource returned by query(). If NULL, the last result returned by query() will be used.
       * @return An object representing a data row.
       */
-    function fetchNextObject($result = NULL)
+    public function fetchNextObject($result = NULL)
     {
       if ($result == NULL)
         $result = $this->lastResult;
@@ -77,7 +93,7 @@
       * @param $result The ressource returned by query(). If NULL, the last result returned by query() will be used.
       * @return The number of rows of the query (0 or more).
       */
-    function numRows($result = NULL)
+    public function numRows($result = NULL)
     {
       if ($result == NULL)
         return mysql_num_rows($this->lastResult);
@@ -91,7 +107,7 @@
       * @param $debug If true, it output the query and the resulting row.
       * @return An object representing a data row (or NULL if result is empty).
       */
-    function queryUniqueObject($query, $debug = -1)
+    public function queryUniqueObject($query, $debug = -1)
     {
       $query = "$query LIMIT 1";
 
@@ -109,7 +125,7 @@
       * @param $debug If true, it output the query and the resulting value.
       * @return A value representing a data cell (or NULL if result is empty).
       */
-    function queryUniqueValue($query, $debug = -1)
+    public function queryUniqueValue($query, $debug = -1)
     {
       $query = "$query LIMIT 1";
 
@@ -127,7 +143,7 @@
       * @param $where The condition before to compute the maximum.
       * @return The maximum value (or NULL if result is empty).
       */
-    function maxOf($column, $table, $where)
+    public function maxOf($column, $table, $where)
     {
       return $this->queryUniqueValue("SELECT MAX(`$column`) FROM `$table` WHERE $where");
     }
@@ -136,7 +152,7 @@
       * @param $table The table where to compute the maximum.
       * @return The maximum value (or NULL if result is empty).
       */
-    function maxOfAll($column, $table)
+    public function maxOfAll($column, $table)
     {
       return $this->queryUniqueValue("SELECT MAX(`$column`) FROM `$table`");
     }
@@ -145,7 +161,7 @@
       * @param $where The condition before to compute the number or rows.
       * @return The number of rows (0 or more).
       */
-    function countOf($table, $where)
+    public function countOf($table, $where)
     {
       return $this->queryUniqueValue("SELECT COUNT(*) FROM `$table` WHERE $where");
     }
@@ -153,7 +169,7 @@
       * @param $table The table where to compute the number of rows.
       * @return The number of rows (0 or more).
       */
-    function countOfAll($table)
+    public function countOfAll($table)
     {
       return $this->queryUniqueValue("SELECT COUNT(*) FROM `$table`");
     }
@@ -161,7 +177,7 @@
       * even if debug is set to Off.
       * @param $query The SQL query to echo before diying.
       */
-    function debugAndDie($query)
+    public function debugAndDie($query)
     {
       $this->debugQuery($query, "Error");
       die("<p style=\"margin: 2px;\">".mysql_error()."</p></div>");
@@ -172,7 +188,7 @@
       * @param $query The SQL query to debug.
       * @param $result The resulting table of the query, if available.
       */
-    function debug($debug, $query, $result = NULL)
+    public function debug($debug, $query, $result = NULL)
     {
       if ($debug === -1 && $this->defaultDebug === false)
         return;
@@ -191,7 +207,7 @@
       * @param $query The SQL query to debug.
       * @param $reason The reason why this function is called: "Default Debug", "Debug" or "Error".
       */
-    function debugQuery($query, $reason = "Debug")
+    public function debugQuery($query, $reason = "Debug")
     {
       $color = ($reason == "Error" ? "red" : "orange");
       echo "<div style=\"border: solid $color 1px; margin: 2px;\">".
@@ -203,7 +219,7 @@
       * Should be preceded by a call to debugQuery().
       * @param $result The resulting table of the query.
       */
-    function debugResult($result)
+    public function debugResult($result)
     {
       echo "<table border=\"1\" style=\"margin: 2px;\">".
            "<thead style=\"font-size: 80%\">";
@@ -245,7 +261,7 @@
       * @return The script execution time in seconds since the
       * creation of this object.
       */
-    function getExecTime()
+    public function getExecTime()
     {
       return round(($this->getMicroTime() - $this->mtStart) * 1000) / 1000;
     }
@@ -253,14 +269,14 @@
       * @return The number of queries executed on the database server since the
       * creation of this object.
       */
-    function getQueriesCount()
+    public function getQueriesCount()
     {
       return $this->nbQueries;
     }
     /** Go back to the first element of the result line.
       * @param $result The resssource returned by a query() function.
       */
-    function resetFetch($result)
+    public function resetFetch($result)
     {
       if (mysql_num_rows($result) > 0)
         mysql_data_seek($result, 0);
@@ -268,14 +284,14 @@
     /** Get the id of the very last inserted row.
       * @return The id of the very last inserted row (in any table).
       */
-    function lastInsertedId()
+    public function lastInsertedId()
     {
       return mysql_insert_id();
     }
     /** Close the connexion with the database server.\n
       * It's usually unneeded since PHP do it automatically at script end.
       */
-    function close()
+    public function close()
     {
       mysql_close();
     }
@@ -283,10 +299,10 @@
     /** Internal method to get the current time.
       * @return The current time in seconds with microseconds (in float format).
       */
-    function getMicroTime()
+    public function getMicroTime()
     {
       list($msec, $sec) = explode(' ', microtime());
       return floor($sec / 1000) + $msec;
     }
   } // class DB
-?>
+
