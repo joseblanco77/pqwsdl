@@ -6,7 +6,7 @@ $action = isset($_GET['q']) ? $_GET['q'] : false;
 if(!$action || !in_array($action,array('test','get','check','change'))) {
     header('Location: /');
 }
-$portManager = PortManager::getInstance($action, $_POST, 7896 , $db);
+$portManager = PortManager::getInstance($action, $_POST, 6610 , $db);
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,6 +28,9 @@ $portManager = PortManager::getInstance($action, $_POST, 7896 , $db);
         </style>
     </head>
     <body>
+
+        <a href="/">Inicio</a> - <a href="/failures.php">Ver envíos fallidos</a>
+
         <h3>Params</h3>
         <pre>
             <?php 
@@ -46,7 +49,7 @@ $portManager = PortManager::getInstance($action, $_POST, 7896 , $db);
             }
         ?>
         <h3>Response</h3>
-        <pre><?php print_r($portManager->getResponse()); ?></pre>
+        <pre><?php //print_r($portManager->getResponse()); ?></pre>
         <script type="text/javascript">
             var xmlbox = document.getElementById('xmlbox');
             xmlbox.style.height = (25+xmlbox.scrollHeight)+"px";

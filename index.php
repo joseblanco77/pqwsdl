@@ -50,6 +50,8 @@ include_once(getcwd() . '/general.php');
 </head>
 <body>
 
+    <a href="/failures.php">Ver envíos fallidos</a>
+
     <div class="tab">
       <button class="tablinks active" data-tab="ProbarServicioWeb">ProbarServicioWeb</button>
       <button class="tablinks" data-tab="ConsultaInformacion">ConsultaInformacion</button>
