@@ -23,6 +23,7 @@ $failures = $db->query("SELECT * FROM pqwsdl WHERE STATUS = 'error';");
     </head>
     <body>
         <a href="/">Inicio</a>
+        <form method="post" action="/retry.php">
         <table border="1">
             <thead>
                 <tr>
@@ -42,10 +43,12 @@ $failures = $db->query("SELECT * FROM pqwsdl WHERE STATUS = 'error';");
                     <td><?php $resp = (array)json_decode($row->response); echo $resp['message'] ?></td>
                     <td><?php $params = (array)json_decode($row->params); print_r($params) ?></td>
                     <td><?php $date = strtotime($row->ts); echo date('d/m/Y H:i:s',$date) ?></td>
-                    <td><input type="checkbox" id="pqwsdl_<?php echo $row->id_wsdl ?>1" value="<?php echo $row->id_wsdl ?>"></td>
+                    <td><input type="checkbox" id="pqwsdl_<?php echo $row->id_wsdl ?>1" value="<?php echo $row->id_wsdl ?>" name="failures[]"></td>
                 </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
+        <button type="submit">Reenviar</button>
+        </form>
     </body>
 </html>

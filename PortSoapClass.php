@@ -168,6 +168,8 @@ class PortSoap
         }
     }
     
+    
+    
     /**
      * Facade for XML generator
      * @param string  $type Method to call

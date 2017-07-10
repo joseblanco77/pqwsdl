@@ -49,7 +49,7 @@ $portManager = PortManager::getInstance($action, $_POST, 6610 , $db);
             }
         ?>
         <h3>Response</h3>
-        <pre><?php print_r($portManager->getResponse()); ?></pre>
+        <pre><?php //print_r($portManager->getResponse()); ?></pre>
         <script type="text/javascript">
             var xmlbox = document.getElementById('xmlbox');
             xmlbox.style.height = (25+xmlbox.scrollHeight)+"px";
